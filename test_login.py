@@ -45,9 +45,10 @@ def test_product_is_displayed_in_cart(page: Page):
 
     page.locator('[data-test="shopping-cart-link"]').click()
     expect(page).to_have_url("https://www.saucedemo.com/cart.html")
-    expect(page.locator('[data-test="inventory-item-name"]')).to_have_text(
-        "Sauce Labs Backpack"
-    )
+    expect(page.locator('[data-test="cart-list"]')).to_be_visible()
+    expect(
+        page.locator('.cart_item [data-test="inventory-item-name"]')
+    ).to_have_text("Sauce Labs Backpack")
 
 
 def test_login_with_invalid_password(page: Page):
